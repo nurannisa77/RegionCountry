@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main.html}">
+
+<head>
+    <title>Country</title>
+</head>
+
+<body>
+    <section  class="container" layout:fragment="content" >
+    <div class="content container"></div>
+        <div class="page-header mt-5 mb-4">
+            <div class="row">
+                <div class="col-sm-12">
+                </div>
+            </div>
+        </div>
+      
+        
+        <div class="card card-table comman-shadow ">
+            <div class="card-body">
+                <div class="container">
+                    <div class="mt-4 d-flex justify-content-between align-items-center">
+                        <h1 class="fw-bold">List of Country</h1>
+                        
+                        <button
+                        type="button"
+                        class="btn btn-success"
+                        data-bs-toggle="modal"
+                        data-bs-target="#create"
+                        >
+                        Add Country
+                    </button>
+                </div>
+                            
+                <div class="table-responsive mx-auto">
+                    <table class="table mt-3 table-hover table-striped table-bordered text-center"
+                    id="table-country"
+                    >
+                    <thead class="table-dark">
+                        <tr>
+                            <th class="text-center">No</th>
+                            <th class="text-center">Code</th>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Region</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                </table>
+                <!-- Modal Create -->
+                <div
+                class="modal fade"
+                id="create"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabindex="-1"
+                aria-labelledby="createLabel"
+                aria-hidden="true"
+                >
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5 fw-bold" 
+                            id="createLabel">
+                                Create Country
+                            </h1>
+                            <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                            ></button>
+                        </div>
+                        <form>
+                            <div class="modal-body">
+                                <div class="input-group mb-4 mt-2 ">
+                                    <span
+                                    class="input-group-text fw-bold bg-success-subtle"
+                                    id="c-name"
+                                    >Name</span
+                                    >
+                                    <input
+                                    type="text"
+                                    class="form-control"
+                                    aria-label="Sizing example input"
+                                    aria-describedby="c-name"
+                                    id="create-name"
+                                    required
+                                    >
+                                </div>
+                                <div class="input-group mb-4 mt-2">
+                                    <span
+                                    class="input-group-text fw-bold bg-success-subtle"
+                                    id="c-code"
+                                    >Code</span
+                                    >
+                                    <input
+                                    type="text"
+                                    class="form-control"
+                                    aria-label="Sizing example input"
+                                    aria-describedby="c-code"
+                                    id="create-code"
+                                    required
+                                    />
+                                </div>
+                                <div class="input-group mb-4 mt-2">
+                                    <span
+                                    class="input-group-text fw-bold bg-success-subtle"
+                                    id="region-id"
+                                    >Region</span
+                                    ><select
+                                    type="text"
+                                    class="form-control"
+                                    aria-label="Sizing example input"
+                                    aria-describedby="c-countryRegion"
+                                    id="create-region-country"
+                                    required
+                                    >
+                                    <option>Select Your Region</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                            >
+                            Close
+                        </button>
+                        <button
+                        id="create-country"
+                        type="submit"
+                        class="btn btn-success"
+                        >
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+         <!-- Modal Detail -->
+      <div
+      class="modal fade"
+      id="detail"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="detailLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 fw-bold" 
+            id="detailLabel">
+              Detail Country
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="input-group mb-4 mt-2">
+              <span class="input-group-text fw-bold bg-success-subtle" 
+              id="d-id"
+              >Id</span
+              >
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="d-id"
+                id="detail-id"
+                readonly
+              />
+            </div>
+
+            <div class="input-group mb-4 mt-2">
+              <span
+                class="input-group-text fw-bold bg-success-subtle"
+                id="d-name"
+                >Name</span
+              >
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="d-name"
+                id="detail-name"
+                readonly
+              />
+            </div>
+
+            <div class="input-group mb-4 mt-2">
+              <span
+                class="input-group-text fw-bold bg-success-subtle"
+                id="d-code"
+                >Code</span
+              >
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="d-code"
+                id="detail-code"
+                readonly
+              />
+            </div>
+
+            <div class="input-group mb-4 mt-2">
+              <span
+                class="input-group-text fw-bold bg-success-subtle"
+                id="d-region"
+                >Region</span
+              >
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="d-countryRegion"
+                id="detail-region"
+                readonly
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Update -->
+    <div
+    class="modal fade"
+    id="update"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="updateLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 fw-bold" 
+          id="updateLabel">
+          Update Country
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <form>
+          <div class="modal-body">
+            <input type="hidden" id="update-id" />
+            <div class="input-group mb-4 mt-2">
+              <span
+                class="input-group-text fw-bold bg-success-subtle"
+                id="u-name"
+                >Name</span
+              >
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="u-name"
+                id="update-name"
+                required
+              />
+            </div>
+
+            <div class="input-group mb-4 mt-2">
+              <span
+                class="input-group-text fw-bold bg-success-subtle"
+                id="u-code"
+                >Code</span
+              >
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="u-code"
+                id="update-code"
+                required
+              />
+            </div>
+
+            <div class="input-group mb-4 mt-2">
+              <span
+                class="input-group-text fw-bold bg-success-subtle"
+                id="region-id"
+                >Region</span
+              >
+              <select
+                type="text"
+                class="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="c-countryRegion"
+                id="update-region-country"
+                required
+              >
+                <option>Select Your Region</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              id="update-country"
+              type="submit"
+              class="btn btn-success"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</section>
+<div layout:fragment="js">
+    <script th:src="@{/js/country.js}"></script>
+</div>
+</body>
+</html>

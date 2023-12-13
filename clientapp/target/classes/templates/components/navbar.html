@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/profile.css}" />
+    <title>Navbar</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-secondary" th:fragment="navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" th:href="@{/}">
+          <img
+            th:src="@{/img/github.png}"
+            alt="Logo"
+            width="30"
+            height="30"
+            class="d-inline-block align-text-top"
+          />
+          Annisa
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarScroll"
+          aria-controls="navbarScroll"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul
+            class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+            style="--bs-scroll-height: 100px"
+          >
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                th:classappend="${isActive == 'home' ? 'active fw-bold' : ''}"
+                th:href="@{/home}"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                th:classappend="${isActive == 'region' ? 'active fw-bold' : ''}"
+                th:href="@{/region}"
+                sec:authorize="hasAnyRole('USER','ADMIN')"
+                >Region</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                th:classappend="${isActive == 'country' ? 'active fw-bold' : ''}"
+                th:href="@{/country}"
+                sec:authorize="hasRole('ADMIN')"
+                >Country</a
+              >
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle fw-bold" 
+                href="#" id="navbarDropdownMenuLink" 
+                role="button" 
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+                    <span sec:authentication="name"></span>
+                </a>
+                <ul 
+                class="dropdown-menu dropdown-menu-end" 
+                aria-labelledby="navbarDropdownMenuLink">
+                <li>
+                  <button
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#profileModal"
+                  type="button"
+                  onclick="getUserProfile()"
+                  >
+                  Profile <i class="bi bi-person"></i>
+                </button>
+                <li>
+                    <li>
+                      <a class="dropdown-item" 
+                      href="#">Settings</a></li>
+          <button
+            class="btn btn-outline-danger d-flex-center justify-content-center"
+            data-bs-toggle="modal"
+            data-bs-target="#logoutModal"
+            type="button"
+          >
+            Logout 
+          </button>
+        </div>
+      </div>
+
+ <!-- Modal Profile -->
+ <div
+ class="modal fade"
+ id="profileModal"
+ tabindex="-1"
+ aria-labelledby="exampleModalLabel"
+ aria-hidden="true"
+>
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header d-flex justify-content-center">
+       <h1 class="modal-title fs-4 fw-bold" id="exampleModalLabel">
+         Profile
+       </h1>
+     </div>
+     <div class="modal-body">
+       <div class="input-group mt-2">
+        <table class="table table-bordered table-info">
+            <tbody>
+                <tr>
+                    <th class="col-4 table-success">ID</th>
+                    <td class="col-8" id="userId"></td>
+                </tr>
+                <tr>
+                    <th class="col-4 table-success">Name</th>
+                    <td class="col-8" id="userName"></td>
+                </tr>
+                <tr>
+                    <th class="col-4 table-success">Email</th>
+                    <td class="col-8" id="userEmail"></td>
+                </tr>
+                <tr>
+                    <th class="col-4 table-success">Phone</th>
+                    <td class="col-8" id="userPhone"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+      
+    
+          </div>
+          <div class="modal-footer">
+              <!-- Add the "Update Profile" button here -->
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateProfile" id="userUpdateId">
+                  Update Profile
+              </button>
+              <!-- Original "Close" button -->
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                  Close
+              </button>
+          </div>
+      </div>
+  </div>
+</div>
+
+ <!-- Modal Update Profile -->
+ <div
+ class="modal fade"
+ id="updateProfile"
+ tabindex="-1"
+ aria-labelledby="exampleModalLabel"
+ aria-hidden="true"
+>
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header d-flex justify-content-center">
+       <h1 class="modal-title fs-4 fw-bold" id="exampleModalLabel">
+         Update Profile
+       </h1>
+     </div>
+     <form>
+       <div class="modal-body">
+         <div class="my-3">
+           <input type="text" id="e-profileId" hidden />
+           <div class="input-group mt-2">
+             <span
+               class="input-group-text col-3 inp"
+               id="editProfileName"
+               > Name</span
+             >
+             <input
+               type="text"
+               class="form-control col-9"
+               aria-label="e-profileName"
+               aria-describedby="e-profileName"
+               id="e-profileName"
+               required
+             />
+           </div>
+         </div>
+         <div class="my-3">
+           <div class="input-group mt-2">
+             <span
+               class="input-group-text col-3 inp"
+               id="editProfileEmail"
+               >Email</span
+             >
+             <input
+               type="email"
+               class="form-control col-9"
+               aria-label="e-profileEmail"
+               aria-describedby="e-profileEmail"
+               id="e-profileEmail"
+               required
+             />
+           </div>
+         </div>
+         <div class="my-3">
+           <div class="input-group mt-2">
+             <span
+               class="input-group-text col-3 inp"
+               id="editProfilePhone"
+               >Phone</span
+             >
+             <input
+               type="number"
+               class="form-control col-9"
+               aria-label="e-profilePhone"
+               aria-describedby="e-profilePhone"
+               id="e-profilePhone"
+               required
+             />
+           </div>
+         </div>
+       </div>
+       <div class="modal-footer">
+         <button
+           type="button"
+           class="btn btn-secondary"
+           data-bs-toggle="modal"
+           data-bs-target="#profileModal"
+         >
+           Cancel
+         </button>
+         <button type="submit" id="u-profUser" class="btn btn-success">
+           Save
+         </button>
+       </div>
+     </form>
+   </div>
+ </div>
+</div>
+      <!-- Modal Logout -->
+      <div
+            class="modal fade"
+            id="logoutModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-6 text-danger" id="exampleModalLabel">
+                        Confirm Logout
+                      </h1>
+                      
+                      <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                      ></button>
+                    </div>
+                    
+                    <div class="modal-body">
+                      <p class="fs-6">
+                        Are you sure you want to logout?
+                      </p>
+                    </div>
+                    <div class="modal-footer">
+                    <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                    >
+                        Cancel
+                    </button>
+                    
+          <form class="d-flex" th:action="@{/logout}" th:method="POST">
+            <button class="btn btn-outline-danger" type="submit">Logout</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </footer>
+  </body>
+</html>
