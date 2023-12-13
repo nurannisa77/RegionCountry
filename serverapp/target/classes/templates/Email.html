@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Template</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 100%;
+            max-width: 600px; /* Menggunakan max-width agar tabel tidak terlalu melebar */
+            margin: 0 auto;
+            border: 1px solid #000000; /* Add a border to the table */
+        }
+
+        table.header {
+            height: 100px;
+            background-color: #ff6d6d;
+            color: #F0F0F0;
+            background-image: url("https://e1.pxfuel.com/desktop-wallpaper/138/543/desktop-wallpaper-6-clouds-cloud.jpg");
+            background-size: cover;
+            background-position: 0px -30px;
+        }
+
+        table.header h1 {
+            font-size: 60px;
+            margin: 25px 0;
+            text-align: center;        }
+
+        h2 {
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        table.content {
+            padding: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #6499E9;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s; /* Transisi perubahan warna latar belakang */
+        }
+        
+        .button:hover {
+            background-color: #4477cc; /* Warna latar belakang saat tombol dihover */
+        }
+
+        #d {
+            margin-top: 30px;
+            font-size: 10px;
+            margin-bottom: -20px;
+        }
+
+        .best {
+            font-style: italic;
+            font-size: 15px;
+            font-weight: 200;
+            text-align: center;
+            margin: 20px;
+        }
+
+        table.footer {
+            background-color: #f2f2f2;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        .social-icons a {
+            margin: 0 5px;
+        }
+
+        .social-icons img {
+            max-width: 20px;
+            max-height: 20px;
+        }
+
+        table.footer p {
+            font-size: 10px;
+            padding: 1px;
+        }
+
+        /* Media query untuk responsifitas */
+        @media screen and (max-width: 600px) {
+            table {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <table class="header">
+        <tr>
+            <td>
+                <h1>Annisa Code</h1>
+            </td>
+        </tr>
+    </table>
+    <table class="content">
+        <tr>
+            <td>
+                <h2>Welcome, [[${name}]]!</h2>
+                <p th:text="${message}">Default message</p>
+                <a target="_blank" href="https://www.unila.ac.id" class="button">Explore</a>
+            </td>
+        </tr>
+        <tr>
+            <td class="best">
+                <p>Best Regards, <a tagret="_blank" href="#">Annisa Code</a></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p id="d">This email was sent on: [[${sentDate}]]</p>
+            </td>
+        </tr>
+    </table>
+    <table class="footer">
+        <tr>
+            <td>
+                <div class="social-icons">
+                    <a target="_blank" href="https://facebook.com"><img 
+                        src="https://cdn-icons-png.flaticon.com/128/6422/6422199.png" alt="Facebook"></a>
+                    <a target="_blank" href="https://github.com/nurannisa77"><img
+                            src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="Github"></a>
+                    <a target="_blank" href="https://instagram.com/annisa_septriza"><img
+                            src="https://cdn-icons-png.flaticon.com/512/3670/3670274.png" alt="Instagram"></a>
+                    <a target="_blank" href="https://id.linkedin.com/in/nurannisaseptriza"><img
+                            src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="LinkedIn"></a>
+                
+                </div>
+                <p>&copy; 2023 Annisa Code. All Rights Reserved.</p>
+                <p>Kampung Baru, Bandar Lampung, Lampung 12345</p>
+                <p>Click here to <a target="_blank" href="https://youtube.com" class="unsubscribe">unsubscribe</a></p>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
