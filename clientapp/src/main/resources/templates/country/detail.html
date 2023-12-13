@@ -1,0 +1,38 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main.html}">
+
+<head>
+    <title>Detail Country</title>
+</head>
+
+<body>
+    <section class="container content" layout:fragment="content">
+        <div class="card mt-5">
+            <h4 class="card-header fw-bold bg-success-subtle text-center">Detail Country</h5>
+            <div class="card-body">
+                <div class="input-group mb-4 mt-2">
+                    <span class="input-group-text fw-bold bg-success-subtle" id="id">ID Country</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="id" th:field="${country.id}" disabled />
+                </div>
+                
+                <div class="input-group mb-4 mt-2">
+                    <span class="input-group-text fw-bold bg-success-subtle" id="code">Country Code</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="code" th:field="${country.code}" disabled />
+                </div>
+                
+                <div class="input-group mb-4 mt-2">
+                    <span class="input-group-text fw-bold bg-success-subtle" id="name">Country Name</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="name" th:field="${country.name}" disabled />
+                </div>
+                
+                <div class="input-group mb-4 mt-2">
+                    <span class="input-group-text fw-bold bg-success-subtle" id="region">Region</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="region" th:field="${country.region.name}" disabled />
+                </div>
+                
+                <a th:href="@{/country}" class="btn btn-outline-secondary px-4">Back</a>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

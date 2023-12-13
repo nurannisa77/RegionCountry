@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main.html}"></html>
+<head>
+    
+    <title>Region</title>
+</head>
+<body> 
+  
+  <section class="container" layout:fragment="content">
+    <div class="content container">
+      <div class="page-header mt-5 mb-4">
+        <div class="row">
+          <div class="col-sm-12">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card card-table comman-shadow">
+      <div class="card-body">
+        <div class="container">
+          <div class="mt-4 d-flex justify-content-between align-items-center">
+            <h1 class="fw-bold">List of Region</h1>
+
+            <!-- Button trigger modal create -->
+            <button
+            type="button"
+            class="btn btn-success"
+            data-bs-toggle="modal"
+            data-bs-target="#create"
+            >
+            Add Region
+          </button>
+        </div>
+        
+        <div class="table-responsive mx-auto">
+          <table class="table mt-3 table-hover table-striped table-bordered text-center"
+          id="table-region"
+          >
+          <thead class="table-dark">
+           <tr>
+            <th class="text-center">No</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Action</th>
+           </tr>
+          </thead>
+        </tr>
+      </table>
+
+       <!-- Modal create -->
+       <div
+       class="modal fade"
+       id="create"
+       data-bs-backdrop="static"
+       data-bs-keyboard="false"
+       tabindex="-1"
+       aria-labelledby="createLabel"
+       aria-hidden="true"
+     >
+       <div class="modal-dialog modal-dialog-centered">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h1 class="modal-title fs-5 fw-bold" 
+             id="createLabel">
+               Add Region
+             </h1>
+             <button
+               type="button"
+               class="btn-close"
+               data-bs-dismiss="modal"
+               aria-label="Close"
+             ></button>
+           </div>
+           <form>
+             <div class="modal-body">
+               <div class="input-group mb-3">
+                 <span
+                   class="input-group-text fw-bold bg-success-subtle"
+                   id="name"
+                   >Name</span
+                 >
+                 <input
+                   type="text"
+                   class="form-control"
+                   aria-label="Sizing example input"
+                   aria-describedby="name"
+                   id="create-name"
+                   required
+                 />
+               </div>
+             </div>
+             <div class="modal-footer">
+               <button
+                 type="button"
+                 class="btn btn-secondary"
+                 data-bs-dismiss="modal"
+               >
+                 Close
+               </button>
+               <button
+                 id="create-region"
+                 type="submit"
+                 class="btn btn-success"
+               >
+                 Save
+               </button>
+             </div>
+           </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+       <!-- Modal detail -->
+       <div 
+       class="modal fade" 
+       id="detail" 
+       data-bs-backdrop="static"
+       data-bs-keyboard="false"
+       tabindex="-1" 
+       aria-labelledby="detailLabel" 
+       aria-hidden="true"
+       >
+       <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 fw-bold" 
+            id="detailLabel">
+            Region Details
+          </h1>
+          <button 
+          type="button" 
+          class="btn-close" 
+          data-bs-dismiss="modal" 
+          aria-label="Close"
+          ></button>
+    </div>
+      <div class="modal-body">
+        <div class="input-group mt-2 mb-4">
+          <span class=" input-group-text fw-bold bg-success-subtle"
+            id="d-id"
+            >Id</span>
+            <input
+            type="text"
+            class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="d-id"
+            id="detail-id"
+            readonly
+            />
+          </div>
+          <div class="input-group my-2">
+            <span
+            class="input-group-text fw-bold bg-success-subtle" 
+            id="d-name"
+            >Name</span>
+            <input
+            type="text"
+            class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="d-name"
+            id="detail-name"
+            readonly
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+        type="button"
+        class="btn btn-secondary"
+        data-bs-dismiss="modal">
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+        
+   <!-- Modal update -->
+   <div class="modal fade" 
+   id="update" 
+   data-bs-backdrop="static" 
+   data-bs-keyboard="false" 
+   tabindex="-1" 
+   aria-labelledby="updateLabel" 
+   aria-hidden="true"
+   >
+      <div class="modal-dialog modal-dialog-centered">
+         <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 fw-bold" 
+                id="updateLabel">
+                Update Region</h1>
+                <button 
+                type="button" 
+                class="btn-close" 
+                data-bs-dismiss="modal" 
+                aria-label="Close">
+            </button>
+        </div>
+        <form >
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <span class="input-group-text fw-bold bg-success-subtle"  
+                    id="u-name"
+                    >Name</span>
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="u-name"
+                id="update-name"
+                required
+              />
+              <input type = "hidden" id="update-id"/>
+            </div>
+          </div>
+          <div class=" modal-footer">
+            <button type="button" 
+            class="btn btn-secondary" 
+            data-bs-dismiss="modal"
+            >Close</button>
+            <button 
+              id="update-region" 
+              type="submit" 
+              class="btn btn-success">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+    <!-- js local -->
+    <div layout:fragment="js">
+      <script th:src="@{/js/region.js}"></script>
+    </div>
+  </body>
+</html>
